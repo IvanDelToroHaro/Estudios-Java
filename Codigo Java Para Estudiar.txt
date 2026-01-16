@@ -68,3 +68,10 @@ boolean solicitarClave;
 				solicitarClave = true;
 			}
 		}while(solicitarClave);
+
+System.out.println("Escriba su fecha de nacimiento (dd-MM-yyyy): ");
+		String fechaFormato = Inicio.sc.next();
+		String[] fechaDividida = fechaFormato.split("-");
+		nuevoUsuario.setFechaNacimientoUsuario(LocalDate.of(Integer.parseInt(fechaDividida[2]), Integer.parseInt(fechaDividida[1]), Integer.parseInt(fechaDividida[0])));
+				
+		Inicio.listaUsuarios.add(nuevoUsuario);
