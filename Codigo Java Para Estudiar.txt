@@ -1,0 +1,70 @@
+4 Operaciones necesarias para poder usar arrays
+
+Registro:
+Usuario /*(Heredacion de la clase Usuario.java)*/ nuevoUsuario = new Usuario()/*(Constructor de la clase usuario.java que contiene el auto incremento de id)*/;
+
+System.out.println("Especificaciones: ")
+nuevoUsuario.set/*(valor;"AliasUsuario")*/(Inicio.sc.next());
+
+Login:
+System.out.println("Alias: ");
+String alias = Inicio.sc.next();
+System.out.println("Clave: ");
+String clave= Inicio.sc.next();
+
+Usuario usuarioAuxiliar = new Usuario();
+
+for(Usuario u : Inicio.listasUsuarios/*(Heredado de Inicio)*/
+if(u.getAliasUsuario().equals(alias)) {
+	uAuxiliar = u;
+	break;
+	}
+}
+
+if(uAuxiliar.getAliasUsuario() != null) {
+			if(uAuxiliar.getClaveUsuario().equals(clave)) {
+				Inicio.sesion = uAuxiliar.getAliasUsuario();
+				System.out.println("El usuario ha accedido correctamente.");
+			}else {
+				System.out.println("Los datos de acceso son incorrectos.");
+			}
+		}else {
+			System.out.println("Los datos de acceso son incorrectos.");
+		}		
+		
+	}
+
+DarDeBaja:
+public void bajaUsuarioXAlias() {
+		
+		if(Inicio.sesion.isBlank()) {
+			System.out.println("Debe haber iniciado sesión para poder dar de baja la cuenta.");
+		}else {
+			System.out.println("Escriba su alias para confirmar que quiere dar de baja la cuenta: ");
+			String alias = Inicio.sc.next();
+			if(Inicio.sesion.equals(alias)) {
+				for(Usuario u : Inicio.listaUsuarios) {
+					if(u.getAliasUsuario().equals(alias)) {
+						Inicio.listaUsuarios.remove(u);
+						break;
+					}
+				}
+			}
+		}		
+		
+	}
+
+boolean solicitarClave;		
+		do {
+			System.out.println("Escriba su contraseña: ");
+			String clave1 = Inicio.sc.next();			
+			System.out.println("Confirme su contraseña: ");
+			String clave2 = Inicio.sc.next();
+			if(clave1.equals(clave2)) {
+				nuevoUsuario.setClaveUsuario(clave2);
+				solicitarClave = false;
+			}else {
+				System.out.println("Las contraseñas no coinciden: ");
+				solicitarClave = true;
+			}
+		}while(solicitarClave);
